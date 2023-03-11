@@ -1,0 +1,34 @@
+name: 'Publish to Distributed Press'
+description: 'Publishes a folder to a Distributed Press Instance'
+author: 'Jacky Zhao'
+
+inputs:
+  publish_dir:
+    default: .
+    description: "Directory to deploy"
+    required: false
+  dp_url:
+    description: "URL of the Distributed Press Instance"
+    required: true
+  refresh_token:
+    description: "Refresh token for either an Admin or Publisher account"
+    required: true
+  site_url:
+    description: "URL of the site (without the protocol)"
+    required: true
+  deploy_http:
+    description: "Whether to deploy via a regular HTTP server"
+    required: false
+    default: true
+  deploy_hyper:
+    description: "Whether to deploy via the Hyper Protocol"
+    required: false
+    default: true
+  deploy_ipfs:
+    description: "Whether to deploy via IPFS"
+    required: false
+    default: true
+
+runs:
+  using: 'node19'
+  main: 'dist/index.js'
