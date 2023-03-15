@@ -1,7 +1,5 @@
-name: 'Publish to Distributed Press'
-description: 'Publishes a folder to a Distributed Press Instance'
-author: 'Jacky Zhao'
-
+name: Publish to Distributed Press
+description: Publishes a folder to a Distributed Press Instance
 inputs:
   publish_dir:
     default: .
@@ -28,7 +26,9 @@ inputs:
     description: "Whether to deploy via IPFS"
     required: false
     default: true
-
+branding:
+  icon: box
+  color: purple
 runs:
-  using: 'node19'
-  main: 'dist/index.js'
+  using: node19
+  main: dist/index.js
