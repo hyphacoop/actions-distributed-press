@@ -30,5 +30,5 @@ branding:
   icon: box
   color: purple
 runs:
-  using: node19
+  using: node16
   main: dist/index.js
