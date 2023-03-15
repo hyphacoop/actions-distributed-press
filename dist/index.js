@@ -8535,8 +8535,10 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(2186);
+const fetch = requre('node-fetch');
 const tar = __nccwpck_require__(366);
 const { blob } = __nccwpck_require__(6465);
+
 
 let publishDir = core.getInput('publish_dir');
 let siteURL = core.getInput('site_url', { require: true });
@@ -8596,7 +8598,8 @@ async function run() {
   console.log("Success!");
 }
 
-run()
+run();
+
 
 })();
 

@@ -1,6 +1,8 @@
 const core = require('@actions/core');
+const fetch = requre('node-fetch');
 const tar = require('tar-fs');
 const { blob } = require('node:stream/consumers');
+
 
 let publishDir = core.getInput('publish_dir');
 let siteURL = core.getInput('site_url', { require: true });
@@ -60,4 +62,5 @@ async function run() {
   console.log("Success!");
 }
 
-run()
+run();
+

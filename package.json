@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
+    "node-fetch": "^2.0.0",
     "tar-fs": "^2.1.1"
   }
 }
