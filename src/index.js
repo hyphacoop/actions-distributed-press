@@ -21,7 +21,7 @@ async function run() {
   let siteExists = true;
   const existCheckResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'get' });
   if (!existCheckResponse.ok) {
-    const json = await existCheckResponse.json();
+    const json = await existCheckResponse.text();
     console.log(`Couldn't verify that the site exists: ${json}`);
     siteExists = false;
   }
@@ -39,11 +39,11 @@ async function run() {
     });
 
     if (!makeSiteResponse.ok) {
-      const json = await makeSiteResponse.json();
+      const json = await makeSiteResponse.text();
       throw new Error(`Failed to create the site: ${json}`);
     }
 
-    console.log(await makeSiteResponse.json());
+    console.log(await makeSiteResponse.text());
   }
 
   // put request to upload the content
@@ -56,12 +56,12 @@ async function run() {
   console.log("Uploading new site content...");
   const uploadResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'put', body: formData });
   if (!uploadResponse.ok) {
-    const json = await uploadResponse.json();
+    const json = await uploadResponse.text();
     throw new Error(`Failed to upload the contents of the site: ${json}`);
   }
 
   console.log("Success!");
-  console.log(await uploadResponse.json());
+  console.log(await uploadResponse.text());
 }
 
 run();
