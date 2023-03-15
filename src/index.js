@@ -1,8 +1,7 @@
 const core = require('@actions/core');
-const fetch = requre('node-fetch');
+const fetch = require('node-fetch');
 const tar = require('tar-fs');
 const { blob } = require('node:stream/consumers');
-
 
 let publishDir = core.getInput('publish_dir');
 let siteURL = core.getInput('site_url', { require: true });
@@ -29,7 +28,7 @@ async function run() {
 
   // create it if it doesnt
   if (!siteExists) {
-    console.log("Create a new site...")
+    console.log("Creating a new site...");
     const makeSiteResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, {
       headers,
       method: 'post',
@@ -43,6 +42,8 @@ async function run() {
       const json = await makeSiteResponse.json();
       throw new Error(`Failed to create the site: ${json}`);
     }
+
+    console.log(await makeSiteResponse.json());
   }
 
   // put request to upload the content
@@ -60,6 +61,7 @@ async function run() {
   }
 
   console.log("Success!");
+  console.log(await uploadResponse.json());
 }
 
 run();
