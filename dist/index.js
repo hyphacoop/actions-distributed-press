@@ -12539,7 +12539,7 @@ const { blob } = __nccwpck_require__(6465);
 let publishDir = core.getInput('publish_dir');
 let siteURL = core.getInput('site_url', { require: true });
 let dpURL = core.getInput('dp_url', { require: true });
-dpURL = dpURL.endsWith("/") ? dpURL : dpURL + "/";
+dpURL = dpURL.endsWith("/") ? dpURL.slice(0, -1) : dpURL;
 let refreshToken = core.getInput('refresh_token', { require: true });
 let protocols = {
   http: core.getInput('deploy_http'),
