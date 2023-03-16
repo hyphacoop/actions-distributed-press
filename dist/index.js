@@ -12542,29 +12542,28 @@ let dpURL = core.getInput('dp_url', { require: true });
 dpURL = dpURL.endsWith("/") ? dpURL.slice(0, -1) : dpURL;
 let refreshToken = core.getInput('refresh_token', { require: true });
 let protocols = {
-  http: core.getInput('deploy_http'),
-  hyper: core.getInput('deploy_hyper'),
-  ipfs: core.getInput('deploy_ipfs'),
+  http: core.getInput('deploy_http') ?? false,
+  hyper: core.getInput('deploy_hyper') ?? false,
+  ipfs: core.getInput('deploy_ipfs') ?? false,
 };
 
-const headers = { Authorization: `Bearer ${refreshToken}` };
+const headers = { 
+  Authorization: `Bearer ${refreshToken}`, 
+};
 
 async function run() {
   // see if the site exists
-  let siteExists = true;
-  const existCheckResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'get' });
+  const existCheckResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'GET' });
   if (!existCheckResponse.ok) {
     const json = await existCheckResponse.text();
     console.log(`Couldn't verify that the site exists: ${json}`);
-    siteExists = false;
-  }
-
-  // create it if it doesnt
-  if (!siteExists) {
     console.log("Creating a new site...");
     const makeSiteResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, {
-      headers,
-      method: 'post',
+      headers: { 
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
       body: JSON.stringify({
         domain: siteURL,
         protocols,
@@ -12587,7 +12586,7 @@ async function run() {
   formData.append('file', tarBlob, siteURL);
 
   console.log("Uploading new site content...");
-  const uploadResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'put', body: formData });
+  const uploadResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'PUT', body: formData });
   if (!uploadResponse.ok) {
     const json = await uploadResponse.text();
     throw new Error(`Failed to upload the contents of the site: ${json}`);
