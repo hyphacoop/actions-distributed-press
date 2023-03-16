@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish to Distributed Press 
-        uses: hyphacoop/actions-distributed-press@v0.1
+        uses: hyphacoop/actions-distributed-press@v1.1
         with:
           publish_dir: public                     # (optional) defaults to /public
           dp_url: https://api.dp.chanterelle.xyz  # URL of Distributed Press API Instance (include http/https)

@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jackyzha0/actions-distributed-press.git"
+    "url": "git+https://github.com/hyphacoop/actions-distributed-press.git"
   },
   "keywords": [
     "hypha",
@@ -20,9 +20,9 @@
   "author": "Jacky Zhao",
   "license": "AGPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/jackyzha0/actions-distributed-press/issues"
+    "url": "https://github.com/hyphacoop/actions-distributed-press/issues"
   },
-  "homepage": "https://github.com/jackyzha0/actions-distributed-press#readme",
+  "homepage": "https://github.com/hyphacoop/actions-distributed-press#readme",
   "devDependencies": {
     "@vercel/ncc": "^0.36.1"
   },
