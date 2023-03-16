@@ -9193,35 +9193,6 @@ SafeBuffer.allocUnsafeSlow = function (size) {
 
 /***/ }),
 
-/***/ 1553:
-/***/ ((module) => {
-
-/*! stream-to-blob. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
-/* global Blob */
-
-module.exports = streamToBlob
-
-function streamToBlob (stream, mimeType) {
-  if (mimeType != null && typeof mimeType !== 'string') {
-    throw new Error('Invalid mimetype, expected string.')
-  }
-  return new Promise((resolve, reject) => {
-    const chunks = []
-    stream
-      .on('data', chunk => chunks.push(chunk))
-      .once('end', () => {
-        const blob = mimeType != null
-          ? new Blob(chunks, { type: mimeType })
-          : new Blob(chunks)
-        resolve(blob)
-      })
-      .once('error', reject)
-  })
-}
-
-
-/***/ }),
-
 /***/ 4841:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -14073,7 +14044,6 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186);
 const fetch = __nccwpck_require__(467);
 const tar = __nccwpck_require__(366);
-const streamToBlob = __nccwpck_require__(1553);
 const FormData = __nccwpck_require__(4334);
 
 let publishDir = core.getInput('publish_dir');
@@ -14123,9 +14093,8 @@ async function run() {
   // put request to upload the content
   console.log("Creating tarball...");
   const tarStream = tar.pack(publishDir);
-  const tarBlob = await streamToBlob(tarStream);
   const formData = new FormData();
-  formData.append('file', tarBlob, siteURL);
+  formData.append('file', tarStream, siteURL);
 
   console.log("Uploading new site content...");
   const uploadResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'PUT', body: formData });
