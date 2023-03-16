@@ -12551,6 +12551,8 @@ const headers = {
   Authorization: `Bearer ${refreshToken}`, 
 };
 
+console.log(`Getting ready to deploy ${siteURL} to ${dpURL}`)
+
 async function run() {
   // see if the site exists
   const existCheckResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'GET' });
@@ -12558,7 +12560,7 @@ async function run() {
     const json = await existCheckResponse.text();
     console.log(`Couldn't verify that the site exists: ${json}`);
     console.log("Creating a new site...");
-    const makeSiteResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, {
+    const makeSiteResponse = await fetch(`${dpURL}/v1/sites`, {
       headers: { 
         ...headers,
         'Content-Type': 'application/json'

@@ -1,6 +1,6 @@
 {
   "name": "actions-distributed-press",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Publish directory to Distributed Press using GitHub Actions",
   "main": "dist/index.js",
   "scripts": {
