@@ -14104,7 +14104,8 @@ async function run() {
   }
 
   console.log("Success!");
-  console.log(await uploadResponse.text());
+  const statusResponse = await fetch(`${dpURL}/v1/sites/${siteURL}`, { headers, method: 'GET' });
+  console.log(await statusResponse.text())
 }
 
 run();
