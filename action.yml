@@ -17,7 +17,7 @@ inputs:
   deploy_http:
     description: "Whether to deploy via a regular HTTP server"
     required: false
-    default: true
+    default: false
   deploy_hyper:
     description: "Whether to deploy via the Hyper Protocol"
     required: false
