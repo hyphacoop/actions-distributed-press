@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const fetch = require('node-fetch');
 const tar = require('tar-fs');
-const { blob } = require('node:stream/consumers');
+const streamToBlob = require('stream-to-blob');
 const FormData = require('form-data');
 
 let publishDir = core.getInput('publish_dir');
@@ -51,7 +51,7 @@ async function run() {
   // put request to upload the content
   console.log("Creating tarball...");
   const tarStream = tar.pack(publishDir);
-  const tarBlob = await blob(tarStream);
+  const tarBlob = await streamToBlob(tarStream);
   const formData = new FormData();
   formData.append('file', tarBlob, siteURL);
 
