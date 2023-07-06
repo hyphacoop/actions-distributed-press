@@ -12,6 +12,7 @@ let protocols = {
   http: core.getBooleanInput('deploy_http'),
   hyper: core.getBooleanInput('deploy_hyper'),
   ipfs: core.getBooleanInput('deploy_ipfs'),
+  bittorrent: core.getBooleanInput('deploy_bittorrent'),
 };
 
 const headers = { 
