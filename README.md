@@ -21,5 +21,6 @@ jobs:
           deploy_http: false
           deploy_hyper: true
           deploy_ipfs: true
+          deploy_bittorrent: true
       ...
 ```

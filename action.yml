@@ -26,6 +26,10 @@ inputs:
     description: "Whether to deploy via IPFS"
     required: false
     default: true
+  deploy_bittorrent:
+    description: "Whether to deploy via BitTorrent"
+    required: false
+    default: true
 branding:
   icon: box
   color: purple
