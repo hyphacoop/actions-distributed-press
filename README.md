@@ -128,4 +128,4 @@ Please see [Distributed Press Documentation](https://docs.distributed.press/depl
 
 ### Congratulations!
 
-Your site is now published over IPFS and can be accessed via `ipns://yourdomain.com`. You’ll also see it on our [explore page](https://explore.distributed.press/) 👀.
+Your site is now published over IPFS and Hyper can be accessed via `ipns://yourdomain.com` or `hyper://yourdomain.com`. You’ll also see it on our [explore page](https://explore.distributed.press/) 👀.
