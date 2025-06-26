@@ -1,6 +1,6 @@
 # `actions-distributed-press`
-Easily deploy a site to Distributed Press using GitHub Actions. 
-Contains examples for deploying websites using [Helia](https://helia.io/) and [Distributed Press](https://distributed.press), an open-source tool for publishing to the World Wide Web and decentralized protocols like IPFS (via [Helia](https://github.com/hyphacoop/api.distributed.press/pull/101)) and [Hypercore](https://holepunch.to/).
+Easily deploy a site to [Distributed Press](https://distributed.press) using GitHub Actions. 
+Contains examples for deploying websites using [Helia](https://helia.io/) and [Hypercore](https://holepunch.to/) protocols.
 
 ## Usage
 ### GitHub Actions Workflows
