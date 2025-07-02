@@ -5,11 +5,10 @@ Contains examples for deploying websites using [Helia](https://helia.io/) and [H
 ## Usage
 ### GitHub Actions Workflows
 
-Two GitHub Actions templates are provided in `.github/workflows/`:
+Two GitHub Actions templates are provided:
 
 1. **static-deploy.yml**: For static websites.
 
-   - [.github/workflows/static-deploy.yml](.github/workflows/static-deploy.yml)
    - **Customize**:
      - `publish_dir`: Set to your static site's output folder ( defaults to root `./`).
      - `site_url`: Replace `example.com` with your domain.
@@ -40,7 +39,6 @@ jobs:
 ```
 
 2. **build-deploy.yml**: For projects requiring a build step.
-   - [.github/workflows/build-deploy.yml](.github/workflows/build-deploy.yml)
    - **Customize**:
      - `publish_dir`: Set to your build output folder (e.g., `build`).
      - `site_url`: Replace `example.com` with your domain.
