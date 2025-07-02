@@ -10,7 +10,7 @@ Two GitHub Actions templates are provided:
 1. **static-deploy.yml**: For static websites.
 
    - **Customize**:
-     - `publish_dir`: Set to your static site's output folder ( defaults to root `./`).
+     - `publish_dir`: Set to your static site's output folder.
      - `site_url`: Replace `example.com` with your domain.
 
 ```yml
@@ -29,7 +29,7 @@ jobs:
       - name: Publish to Distributed Press
         uses: hyphacoop/actions-distributed-press@v1.1.0
         with:
-          publish_dir: ./ # Change to your static files directory, e.g., public
+          publish_dir: ./ # Set to your static site's output directory (e.g., ./ or public)
           dp_url: https://api.distributed.press
           refresh_token: ${{ secrets.DISTRIBUTED_PRESS_TOKEN }}
           site_url: example.com # Replace with your custom domain
@@ -40,7 +40,7 @@ jobs:
 
 2. **build-deploy.yml**: For projects requiring a build step.
    - **Customize**:
-     - `publish_dir`: Set to your build output folder (e.g., `build`).
+     - `publish_dir`: Set to your build output folder.
      - `site_url`: Replace `example.com` with your domain.
      - `publish_branch`: Adjust `gh-pages` to your preferred branch (e.g., `prod`).
 
@@ -90,7 +90,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build # Change to your output directory if different (e.g., dist)
+          publish_dir: public # Set to your build output directory (e.g., public or dist)
           publish_branch: gh-pages # Change to your GitHub Pages branch if different (e.g., prod)
 ```
 
